@@ -28,7 +28,7 @@ public class ProductController {
         return productService.findById(id);
     }
 
-    @PutMapping("/product/update")
+    @PutMapping("/product")
     public boolean update(@RequestBody Product product){
         return productService.update(product);
     }

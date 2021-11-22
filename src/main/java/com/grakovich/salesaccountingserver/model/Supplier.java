@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,6 +18,7 @@ public class Supplier {
     @JsonProperty("id")
     private Long id;
     private String name;
+
 
     public Supplier(String name) {
         this.name = name;

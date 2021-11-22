@@ -1,5 +1,6 @@
 package com.grakovich.salesaccountingserver.service;
 
+import com.grakovich.salesaccountingserver.model.Product;
 import com.grakovich.salesaccountingserver.model.Role;
 import com.grakovich.salesaccountingserver.model.User;
 import com.grakovich.salesaccountingserver.model.UserStatus;
@@ -46,8 +47,14 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public void update(User user) {
-        userRepo.save(user);
+    public boolean update(User user) {
+        boolean b = userRepo.existsByUsername(user.getUsername());
+        Optional<User> byId = userRepo.findById(user.getId());
+        if (user.getUsername().equals(byId.get().getUsername()) || !userRepo.existsByUsername(user.getUsername())){
+            userRepo.save(user);
+            return true;
+        }
+        return false;
     }
 
     public boolean add(User user) {

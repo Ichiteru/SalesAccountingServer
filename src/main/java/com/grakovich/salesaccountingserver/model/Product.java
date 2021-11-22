@@ -25,7 +25,13 @@ public class Product {
 
     @JsonProperty("productType")
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_type_id")
     private ProductType productType;
+
+    @JsonProperty("supplier")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
 
     public Product(Integer amount, Double unitCost, String model, ProductType productType) {
         this.amount = amount;

@@ -35,8 +35,8 @@ public class UserController {
     }
 
     @PutMapping("/user")
-    public void update(@RequestBody User user){
-        userService.update(user);
+    public boolean update(@RequestBody User user){
+        return userService.update(user);
     }
 
     @PostMapping("/user")
